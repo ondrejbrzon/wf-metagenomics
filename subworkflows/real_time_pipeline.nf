@@ -424,6 +424,7 @@ process makeReport {
         String report_name = "${workflow_name}-report.html"
         String amr_arg = amr.name != "OPTIONAL_FILE" ? "--amr ${amr}" : ""
     """
+mkdir -p ondrejbrzon
     workflow-glue report \
         "${report_name}" \
         --workflow_name ${workflow_name} \
