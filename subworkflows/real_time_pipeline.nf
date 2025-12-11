@@ -418,7 +418,7 @@ process makeReport {
         tuple(path(stats), path("versions/*"), path("params.json"), val(taxonomic_rank), val(wf_version))
         path amr
     output:
-        path "*.html", emit: report_html
+        path "ondrejbrzon/wf-metagenomics-report.html", emit: report_html
     script:
         String workflow_name = workflow.manifest.name.replace("epi2me-labs/","")
         String report_name = "${workflow_name}-report.html"
