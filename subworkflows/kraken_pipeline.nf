@@ -178,13 +178,14 @@ process makeReport {
         val taxonomic_rank
         path "amr/*"
     output:
-        path "${report_name}", emit: report_html
+        path "ondrejbrzon/wf-metagenomics-report.html", emit: report_html
     script:
         String workflow_name = workflow.manifest.name.replace("epi2me-labs/","")
         String metadata = new JsonBuilder(metadata).toPrettyString()
         report_name = "${workflow_name}-report.html"
         String amr = params.amr as Boolean ? "--amr amr" : ""
     """
+mkdir -p ondrejbrzon
     echo '${metadata}' > metadata.json
     workflow-glue report \
         "${report_name}" \
